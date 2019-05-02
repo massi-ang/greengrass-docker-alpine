@@ -10,7 +10,7 @@ while [ -d /proc/$daemon_pid ]
 do
  # Sleep for 1s before checking that greengrass daemon is still alive
  daemon_cmdline=`cat /proc/$daemon_pid/cmdline`
- if awk 'BEGIN{ exit(!(ARGV[1] ~ /^\/greengrass\/ggc\/packages\/1.8.0\/bin\/daemon.*/))}' "$daemon_cmdline"; then 
+ if awk 'BEGIN{ exit(!(ARGV[1] ~ /^\/greengrass\/ggc\/packages\/\d+\.\d+\.\d+\/bin\/daemon.*/))}' "$daemon_cmdline"; then 
   sleep 1;
  else
   break;
